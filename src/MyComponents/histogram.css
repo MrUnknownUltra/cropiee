@@ -1,0 +1,61 @@
+/* SARChart.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+.sar-chart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .sar-chart-container .chart-container {
+    width: 500px; /* Adjust the width as needed */
+    margin-left: 50px;
+  }
+  
+  .sar-chart-container table {
+    width: 500px; /* Adjust the width as needed */
+    margin-top: 20px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 12px;
+  }
+  
+  .sar-chart-container thead {
+    background-color: #f2f2f2; /* Light gray background for the header */
+  }
+  
+  .sar-chart-container th, .sar-chart-container td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .sar-chart-container tr:hover {
+    background-color: #d4edda; /* Light green background on hover */
+  }
+  
+  .sar-chart-container tr:hover td {
+    color: #155724; /* Dark green text on hover */
+  }
+  
+  .interpretation{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 25px;
+    border-radius: 10px;
+    background: #25523B;
+    cursor: pointer;
+    margin-top: 15px;
+
+  }
+  .interpret{
+    color: #FFF;
+  text-align: center;
+  font-family: "Montserrat Extrabold", sans-serif;
+  padding: 5px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 30px; /* 93.75% */
+  }   

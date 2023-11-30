@@ -1,0 +1,65 @@
+/* Navbar.css */
+.home {
+    position: absolute;
+    top: 26px;
+    left: 874px;
+    font-weight: 500;
+    
+}
+.about {
+    position: absolute;
+    top: 25px;
+    left: 970px;
+    font-weight: 500;
+}
+.language {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-weight: 500;
+}
+.vectorclass {
+    position: absolute;
+    height: 33.33%;
+    width: 14.9%;
+    left: 80%;
+    max-width: 100%;
+    max-height: 100%;
+}
+.language-parent {
+    position: absolute;
+    top: 25px;
+    left: 1067px;
+    width: 101px;
+    height: 18px;
+}
+.saathi {
+    position: absolute;
+    top: 21px;
+    left: 87px;
+    font-size: 25px;
+    letter-spacing: 0.05em;
+    font-family: Actor;
+}
+.logo {
+    position: absolute;
+    top: 7px;
+    left: 23px;
+    width: 52px;
+    height: 49px;
+    object-fit: cover;
+}
+.home-parent {
+    position: relative;
+    background-color: rgba(53, 136, 86, 0.2);
+    height: 70px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 15px;
+    color: #25523b;
+    font-family: Montserrat;
+    margin-left: 105px;
+    margin-top: 22px;
+    margin-right: 56px;
+}
+

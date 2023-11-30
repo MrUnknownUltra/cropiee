@@ -1,0 +1,17 @@
+.hchart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  
+  .dropdown-container {
+    margin-bottom: 20px; /* Adjust the margin as needed */
+  }
+  
+  .plot-container {
+    width: 700px;
+    padding: auto;
+    margin: auto;
+  }
+  

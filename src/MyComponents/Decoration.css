@@ -1,0 +1,25 @@
+/* Decoration.css */
+
+.container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.main-content {
+  flex-grow: 1;
+}
+
+.lower-image,
+.lower-right {
+  position: fixed; /* Change to 'absolute' if you want it relative to the container */
+  bottom: 0;
+  z-index: 1;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease; /* Smooth transition for opacity */
+}
+
+.lower-right {
+  /* Corrected positioning for the lower-right image */
+  right: 0;
+}
