@@ -4,14 +4,12 @@ import React, { useState, useEffect } from 'react';
 import './gauge.css';
 import gauge from'./Images/gauge.png';
 
-const Gauge = ({ value }) => {
+const Gauge = ({ value ,title}) => {
   const [rotation, setRotation] = useState(0);
 
   useEffect(() => {
     
     const calculatedRotation = (value) * 180; 
-
-    
     const clampedRotation = Math.max(0, Math.min(calculatedRotation, 180));
 
     setRotation(clampedRotation);
@@ -19,7 +17,7 @@ const Gauge = ({ value }) => {
 
   return (
     <div className="gauge-box">
-      <div className='watertitle'>Water Quality Index</div>
+      <div className='watertitle'>{title}</div>
       <div className="gauge-container">
         <img src={gauge} alt="Gauge" className="gauge-image" />
         <div className="gauge-pointer" style={{ transform: `translateY(-50%) rotate(${rotation}deg)` }}></div>
@@ -33,7 +31,6 @@ const Gauge = ({ value }) => {
   <div className="color-label dark-green" style={{ '--angle': '180', '--percent': '100%' }}>100%</div>
 </div>
 </div>
-
         </div>
       </div>
   

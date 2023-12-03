@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Plot from 'react-plotly.js';
 import './histogram.css';
 
-const SARChart = () => {
+const Pie = () => {
   const [parsedData, setParsedData] = useState([]);
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
@@ -116,4 +116,4 @@ const SARChart = () => {
   );
 };
 
-export default SARChart;
+export default Pie;

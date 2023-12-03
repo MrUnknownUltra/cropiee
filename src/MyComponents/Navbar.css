@@ -62,4 +62,7 @@
     margin-top: 22px;
     margin-right: 56px;
 }
-
+.home{
+    color: #25523b; /* Set the color to white */
+    text-decoration: none; /* Remove the underline */
+  }

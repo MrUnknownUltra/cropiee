@@ -82,6 +82,7 @@ const AgriculturalParametersChart = () => {
         <Plot
           data={data}
           layout={layout}
+          config={{ displayModeBar: false }}
           style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.25)' }}
           onHover={(event) => {
             const pointNumber = event.points[0].pointNumber;

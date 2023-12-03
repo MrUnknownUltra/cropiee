@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
+body {
+  	margin: 0; line-height: normal;
+}
+:root {
+  	
+  	/* fonts */
+  	--font-montserrat: Montserrat;
+  	
+  	/* Colors */
+  	--color-darkslategray: #25523b;
+  	
+}
+.click-here-to {
+    font-size: 16px;
+    font-weight: 800;
+    font-family: var(--font-montserrat);
+    color: #000;
+    text-align: left;
+    position: absolute;
+    top: 320px;
+}
+
+.key-features {
+    position: absolute;
+    font-size: 48px;
+    font-weight: 800;
+    font-family: var(--font-montserrat);
+    color: #25523b;
+    text-align: center;
+    top: 100%; /* Adjust the top position as needed */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.plant{
+    position: absolute;
+    left: 60%;
+    padding: 10px;
+    margin: 25px;
+}
+.here-we-provide {
+    position: absolute;
+    top: 176px;
+    left: 14px;
+    line-height: 35px;
+    font-weight: 500;
+    color: #000;
+   
+    width: 724px;
+}
+.namaste-anna-daata {
+    position: absolute;
+    top: 0px;
+    left: 11px;
+    font-size: 30px;
+    text-align: center;
+}
+.grow-better-for {
+    position: absolute;
+    top: 73px;
+    left: 0px;
+    font-size: 55px;
+    text-align: center;
+}
+.kf {
+    position: absolute;
+    top: 12px;
+    left: 15px;
+}
+.key-features-wrapper {
+    position: absolute;
+    top: 313px;
+    left: 392px;
+    background-color: var(--color-darkslategray);
+    width: 120px;
+    height: 40px;
+    overflow: hidden;
+    font-size: 14px;
+    color: #fff;
+}
+.here-we-provide-different-func-parent {
+    position: relative;
+    width: 100%;
+    height: 353px;
+    text-align: left;
+    font-size: 25px;
+    color: var(--color-darkslategray);
+    font-family: var(--font-montserrat);
+}
+
+
+
+/* Add more styles for additional elements as needed */
+
+
+  

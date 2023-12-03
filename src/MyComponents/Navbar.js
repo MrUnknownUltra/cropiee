@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import './Navbar.css';
 import imageUrl from './Images/image19.png';
 import ivector from './Images/Vector.png';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [languageClicked, setLanguageClicked] = useState(false);
@@ -29,7 +30,7 @@ const Navbar = () => {
 
   return (
     <div className="home-parent">
-      <div className="home">Home</div>
+      <Link to='/'className="home"><div >Home</div></Link>
       <div className="about">About</div>
       <div className="language-parent">
         <div className="language" onClick={handleLanguageClick}>

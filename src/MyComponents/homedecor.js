@@ -6,9 +6,11 @@ import limageUrl from './Images/limage2.png';
 import rightImageUrl from './Images/rimage.png';
 import lowerleft from './Images/lowerleft.png';
 import lowerright from './Images/lowerright.png';
-import Upload from './Upload';
+import plant from './Images/plant.png';
+import Homesal from './homesal'
+import Navbar from './Navbar';
 
-const Decoration = ({ handlePredictClick,imgSrc,featureText,icon}) => {
+const Decoration = ({ onPredictClick}) => {
   useEffect(() => {
     const lowerImage = document.querySelector('.lower-image');
     const lowerRightImage = document.querySelector('.lower-right');
@@ -33,29 +35,26 @@ const Decoration = ({ handlePredictClick,imgSrc,featureText,icon}) => {
   }, []);
 
   return (
+    <>
+    <Navbar/>
     <div className="container">
       
       <img src={limageUrl} alt="Left" className="left-image" />
 
      
       <div className="main-content">
-        <Upload 
-         onPredictClick={handlePredictClick}
-        imgSrc={imgSrc}
-        featureText={featureText}
-        icon={icon} 
-        />
+        <Homesal/>
       </div>
 
       
-      <img src={rightImageUrl} alt="Right" className="right-image" />
-      
+      <img src={plant} alt="plant" className="plant" />
       
       <img src={lowerleft} alt="Lower Left" className="lower-image" />
       
       
       <img src={lowerright} alt="Lower Right" className="lower-right" />
     </div>
+    </>
   );
 };
 

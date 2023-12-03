@@ -1,7 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useState } from 'react';
-import Navbar from './MyComponents/Navbar';
 import Decoration from './MyComponents/Decoration';
 import Cholorpeth from './MyComponents/Cholorpeth';
 import Gauge from './MyComponents/gauge';
@@ -9,33 +8,29 @@ import SARChart from './MyComponents/chart';
 import HydrochemicalDataVisualization from './MyComponents/graphs';
 import Stats from './MyComponents/statistics';
 import AgriculturalParametersChart from './MyComponents/soilhistogram';
-import Soil from './MyComponents/soil'
-console.log(Stats.mean)
-function App() {
-  const [showPredictedData, setShowPredictedData] = useState(false);
-  const waterQualityValue = 0.9;
+import HydroPredict from './MyComponents/hydrochemical-prediction';
+import Homedecor from './MyComponents/homedecor';
+import SoilPredict from './MyComponents/soil-prediction';
+import CropPredict from './MyComponents/crop-prediction';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-  const handlePredictClick = () => {
-    // Perform any necessary logic when the predict button is clicked
-    // For example, fetch data, calculate predictions, etc.
-    
-    // Set the state to show the predicted data components
-    setShowPredictedData(true);
-  };
+function App() {
   return (
-    <div>
-      <Navbar />
-     
-      <Decoration onPredictClick={handlePredictClick} />
-      <AgriculturalParametersChart/>
-      {showPredictedData && (
-        <>
-          <Gauge value={waterQualityValue} />
-          <SARChart />
-          {/* Other components you want to show when the "PREDICT" button is clicked */}
-        </>
-      )}
-    </div>
+<Router>
+      <Routes>
+        <Route path="/" element={<Homedecor />} />
+        <Route path="/hydrochemical-prediction" element={<HydroPredict />} />
+        <Route path="/soil-prediction" element={<SoilPredict />} />
+        <Route path="/crop-prediction" element={<CropPredict />} />
+        <Route path="/decoration" element={<Decoration />} />
+        <Route path="/chloropheth" element={<Cholorpeth />} />
+        <Route path="/gauge" element={<Gauge />} />
+        <Route path="/sar-chart" element={<SARChart />} />
+        <Route path="/hydrochemical-visualization" element={<HydrochemicalDataVisualization />} />
+        <Route path="/stats" element={<Stats />} />
+        <Route path="/agricultural-parameters-chart" element={<AgriculturalParametersChart />} />
+      </Routes>
+    </Router>
   );
 }
 
