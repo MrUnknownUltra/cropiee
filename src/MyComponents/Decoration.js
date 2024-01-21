@@ -1,61 +1,42 @@
 /* Decoration.js */
 
-import React, { useEffect } from 'react';
-import './Decoration.css';
-import limageUrl from './Images/limage2.png';
-import rightImageUrl from './Images/rimage.png';
-import lowerleft from './Images/lowerleft.png';
-import lowerright from './Images/lowerright.png';
-import Upload from './Upload';
+import React, { Fragment, useEffect, useRef } from "react";
+import "./Decoration.css";
+import limageUrl from "./Images/limage2.png";
+import rightImageUrl from "./Images/rimage.png";
+import lowerleft from "./Images/lowerleft.png";
+import lowerright from "./Images/lowerright.png";
+import Upload from "./Upload";
+import LowerImage from "./LowerImage";
 
-const Decoration = ({ handlePredictClick,imgSrc,featureText,icon}) => {
-  useEffect(() => {
-    const lowerImage = document.querySelector('.lower-image');
-    const lowerRightImage = document.querySelector('.lower-right');
-
-    const handleScroll = () => {
-      const scrollY = window.scrollY || window.pageYOffset;
-
-      if (scrollY > 100) {
-        lowerImage.style.opacity = '1';
-        lowerRightImage.style.opacity = '1';
-      } else {
-        lowerImage.style.opacity = '0';
-        lowerRightImage.style.opacity = '0';
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+const Decoration = ({ handlePredictClick, imgSrc, featureText, icon }) => {
 
   return (
-    <div className="container">
-      
-      <img src={limageUrl} alt="Left" className="left-image" />
-
-     
-      <div className="main-content">
-        <Upload 
-         onPredictClick={handlePredictClick}
-        imgSrc={imgSrc}
-        featureText={featureText}
-        icon={icon} 
-        />
+    <Fragment>
+      <img
+        src={limageUrl}
+        alt="Left"
+        style={{ position: "absolute", top:'5rem' }}
+      />
+      <div className="container">
+        <div className="main-content">
+          <Upload
+            onPredictClick={handlePredictClick}
+            imgSrc={imgSrc}
+            featureText={featureText}
+            icon={icon}
+          />
+        </div>
       </div>
 
-      
-      <img src={rightImageUrl} alt="Right" className="right-image" />
-      
-      
-      <img src={lowerleft} alt="Lower Left" className="lower-image" />
-      
-      
-      <img src={lowerright} alt="Lower Right" className="lower-right" />
-    </div>
+      <img
+        src={rightImageUrl}
+        alt="Right"
+        style={{ position: "absolute", right: 0, top: '5rem' }}
+      />
+
+    <LowerImage />
+    </Fragment>
   );
 };
 
