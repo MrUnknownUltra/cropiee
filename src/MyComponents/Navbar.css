@@ -14,9 +14,9 @@
 }
 .language {
     position: absolute;
-    top: 0px;
-    left: 0px;
+    height: 10px;
     font-weight: 500;
+    color: #25523b;
 }
 .vectorclass {
     position: absolute;
@@ -27,11 +27,23 @@
     max-height: 100%;
 }
 .language-parent {
+     /* Change absolute to relative */
+     display: inline-block;
+     position: absolute;
+     top: 45px;
+     left: 1167px;
+     width: 101px;
+     height: 18px;
+}
+
+.language-dropdown {
     position: absolute;
-    top: 25px;
-    left: 1067px;
-    width: 101px;
-    height: 18px;
+    top: 100%;
+    left: 0;
+    height: 130px;
+    width: 100px;
+    background-color: #ceded4;
+    z-index: 1;
 }
 .saathi {
     position: absolute;

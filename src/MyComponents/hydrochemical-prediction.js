@@ -26,7 +26,7 @@ function HydroPredict() {
       imgSrc={hydroimgsmall}
       featureText={'Hydrochemical Data Analysis'}
       icon={hydroicon} />
-      {showPredictedData && (
+      {/* {showPredictedData && (
         <>
           <Gauge value={waterQualityValue} />
           <div style={{ display: 'flex' , justifyContent: 'center'}}>
@@ -34,7 +34,7 @@ function HydroPredict() {
           <SARChart />
           </div>
       
-        </>)}
+        </>)} */}
     </div>
   );
 }

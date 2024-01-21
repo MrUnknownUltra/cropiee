@@ -29,9 +29,17 @@ const Navbar = () => {
   const languageOptions = ['English', 'Hindi', 'Tamil', 'Telugu', 'Bengali', 'Marathi'];
 
   return (
+    <>
     <div className="home-parent">
       <Link to='/'className="home"><div >Home</div></Link>
       <div className="about">About</div>
+      
+      <div className="saathi">Saathi</div>
+      <div className="logo">
+        <img src={imageUrl} alt="Logo" />
+      </div>
+    </div>
+    <div>
       <div className="language-parent">
         <div className="language" onClick={handleLanguageClick}>
           {selectedLanguage}
@@ -49,11 +57,8 @@ const Navbar = () => {
           <img src={ivector} alt="Vector" />
         </div>
       </div>
-      <div className="saathi">Saathi</div>
-      <div className="logo">
-        <img src={imageUrl} alt="Logo" />
-      </div>
     </div>
+    </>
   );
 };
 
