@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 import Decoration from "./Decoration";
 import Gauge from "./gauge";
 import WaterPotabilityResults from "./statistics";
-import plant from "./Images/plant.png";
+import plant from "./Images/lateblight.JPG";
 import cropicon from "./Images/cropicon.png";
 import cropimgsmall from "./Images/cropimgsmall.png";
 import "./crop-prediction.css";
@@ -41,10 +41,13 @@ function Typewriter({ text, tagName, className }) {
 
 function CropPredict() {
   const [showPredictedData, setShowPredictedData] = useState(false);
-  const waterQualityValue = 0.9;
+  const [result, setResult] = useState(null)
+  const waterQualityValue = 0.2;
 
-  const handlePredictClick = () => {
-    setShowPredictedData(true);
+  const handlePredictClick = (data) => {
+    setResult(data.data)
+    console.log(data.data)
+    // setShowPredictedData(true);
   };
   const causeText = "Potato late blight is caused by a fungus-like microorganism called Phytophthora infestans. It spreads through spores carried by wind and water. Warm and humid weather conditions, especially during the growing season, create an ideal environment for the disease to thrive.";
 
@@ -71,16 +74,16 @@ function CropPredict() {
                 <div className="cpright"></div>
                 <span className="cpspan" style={{flexDirection:'row',gap:'1rem', alignItems:'center'}}>
                   <p className="cpbold">Crop :</p>
-                  <p className="cpvalue">Potato</p>
+                  <p className="cpbold" >Potato</p>
                 </span>
                 <span className="cpspan" style={{flexDirection:'row',gap:'1rem', alignItems:'center'}}>
 
                   <p className="cpbold">Disease :</p>
-                  <p className="cpvalue">Potato Late Blight</p>
+                  <p className="cpbold"><b>{result && result.class}</b></p>
                 </span>
                 <span className="cpspan">
-                  <p className="cpbold">Severity Index :</p>
-                  <Gauge></Gauge>
+                  <p className="cpbold">Accuracy Index :</p>
+                  <Gauge value={result && result.confidence}></Gauge>
                 </span>
                 <div className="cure-and-cause">
 

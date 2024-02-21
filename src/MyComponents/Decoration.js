@@ -9,7 +9,7 @@ import lowerright from "./Images/lowerright.png";
 import Upload from "./Upload";
 import LowerImage from "./LowerImage";
 
-const Decoration = ({ handlePredictClick, imgSrc, featureText, icon }) => {
+const Decoration = ({ onPredictClick, imgSrc, featureText, icon }) => {
 
   return (
     <Fragment>
@@ -21,7 +21,7 @@ const Decoration = ({ handlePredictClick, imgSrc, featureText, icon }) => {
       <div className="container">
         <div className="main-content">
           <Upload
-            onPredictClick={handlePredictClick}
+            onPredictClick={onPredictClick}
             imgSrc={imgSrc}
             featureText={featureText}
             icon={icon}

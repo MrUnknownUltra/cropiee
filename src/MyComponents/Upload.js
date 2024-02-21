@@ -8,14 +8,15 @@ import Decoration from "./Decoration";
 import SARChart from "./histogram";
 import hydrologopredict from "./Images/hydropredictlogo.png";
 import SoilPredict from "./soil-prediction";
-
+import axios from 'axios';
 import hydroimgsmall from "./Images/hydrochem.png";
 import hydroicon from "./Images/hydroicon.png";
 
-const Upload = ({ imgSrc, featureText, icon }) => {
+const Upload = ({ imgSrc, featureText, icon, onPredictClick }) => {
   const [showPredictedData, setShowPredictedData] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
-
+  const [disease, setdisease] = useState(null)
+  const [accuracy,setaccuracy]=useState(null)
   const waterQualityValue = 0.9;
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -35,16 +36,36 @@ const Upload = ({ imgSrc, featureText, icon }) => {
     setSelectedFile(file);
   };
 
-  const onPredictClick = () => {
+  const onPredictClicke = () => {
     // Handle the logic for predicting with the selected file
     if (selectedFile) {
-      // Perform the prediction with the selected file
-      console.log("Predicting with file:", selectedFile);
-      setShowPredictedData(true);
+        // Construct the request payload
+        const formData = new FormData();
+        formData.append('file', selectedFile);
+
+        // Make a POST request to the API endpoint
+        axios.post('http://127.0.0.1:8000/croppredict', formData)
+            .then(response => {
+                // Handle the response data
+                console.log('Prediction response:', response.data);
+                setdisease(response.data['class'])
+                setaccuracy(response.data['confidence'])
+                response=response.data+selectedFile
+                console.log(response)
+                onPredictClick(response)
+                // Perform any further processing or display of predicted data
+                setShowPredictedData(true);
+            })
+            .catch(error => {
+                // Handle errors
+                console.error('Prediction error:', error);
+                // Optionally, you can display an error message or take other actions
+            });
     } else {
-      console.log("No file selected for prediction");
+        console.log("No file selected for prediction");
     }
-  };
+};
+
 
   return (
     <Fragment>
@@ -89,7 +110,7 @@ const Upload = ({ imgSrc, featureText, icon }) => {
           </div>
         </div>
         <div>
-          <button className="predict-button" onClick={onPredictClick}>
+          <button className="predict-button" onClick={onPredictClicke}>
             <img src={icon} alt="Image" />
             <p className="predicttext">PREDICT</p>
           </button>
@@ -105,7 +126,7 @@ const Upload = ({ imgSrc, featureText, icon }) => {
             alignItems: "center",
           }}
         >
-          <Gauge value={waterQualityValue} />
+          <Gauge value={accuracy} />
           <div
             style={{
               display: "flex",

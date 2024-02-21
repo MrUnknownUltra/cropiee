@@ -29,8 +29,8 @@
   
   .cpspan {
     display: flex;
-    min-width: 50rem;
-    max-width: 50rem;
+    min-width: 60rem;
+    max-width: 60rem;
     flex-direction: column;
     width: 100%;
   }

@@ -9,20 +9,25 @@ import hydroicon from "./Images/hydroicon.png";
 import cropicon from "./Images/cropicon.png";
 import weathericon from "./Images/weathericon.png";
 import Card from "./Card";
+
+import { useTranslation } from 'react-i18next';
+
 const Group = () => {
+
+  const { t } = useTranslation();
+  
   return (
     <div>
       <div className="here-we-provide-different-func-parent">
         <div className="here-we-provide">
-          Here we provide Different Functionalities for our farmer for
-          Sustainable Agriculture and for a Better World.
+        {t('here-we-provide')}
         </div>
-        <b className="namaste-anna-daata">Namaste 🙏,Anna Daata!</b>
+        <b className="namaste-anna-daata">{t('namaste-anna-daata')}</b>
 
-        <b className="grow-better-for">Grow Better For Great Future</b>
+        <b className="grow-better-for">{t('grow-better-for')}</b>
 
         <div className="click-here-to">
-          Click Here To Know About Functionalities 👉
+        {t('click-here-to')}
         </div>
         <div className="key-features-wrapper">
           <b className="kf">Key Features</b>

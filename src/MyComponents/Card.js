@@ -1,7 +1,11 @@
 import React from 'react';
 import './Card.css';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
 const Card = ({ imgSrc, cropDiseaseText, infoText ,icon}) => {
+
+  const { t, i18n } = useTranslation();
   const predictionType = cropDiseaseText.split(' ')[0].toLowerCase();
 
   return (
@@ -15,7 +19,7 @@ const Card = ({ imgSrc, cropDiseaseText, infoText ,icon}) => {
     <div className="predict-parent">
     <Link to={`/${predictionType}-prediction`}className="custom-link">
             <img src={icon} alt="" className="icon" />
-            <div className="predict">PREDICT</div>
+            <div className="predict">{t('predict')}</div>
           </Link>
     </div>
     

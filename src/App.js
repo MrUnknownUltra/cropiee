@@ -12,13 +12,14 @@ import HydroPredict from './MyComponents/hydrochemical-prediction';
 import Homedecor from './MyComponents/homedecor';
 import SoilPredict from './MyComponents/soil-prediction';
 import CropPredict from './MyComponents/crop-prediction';
+import MyComponent from './MyComponents/apitest';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
 <Router>
       <Routes>
-        <Route path="/" element={<Homedecor />} />
+        <Route path="/" element={<Homedecor/>} />
         <Route path="/hydrochemical-prediction" element={<HydroPredict />} />
         <Route path="/soil-prediction" element={<SoilPredict />} />
         <Route path="/crop-prediction" element={<CropPredict />} />
