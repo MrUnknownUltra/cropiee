@@ -3,26 +3,30 @@
     position: absolute;
     top: 26px;
     left: 874px;
-    font-weight: 500;
+    text-decoration: none;
+    color: #25523b;
+    font-weight: 800;
     
 }
 .about {
     position: absolute;
     top: 25px;
-    left: 970px;
-    font-weight: 500;
+    left: 955px;
+    color: #25523b;
+    font-weight: 800;
 }
 .language {
     position: absolute;
     height: 10px;
-    font-weight: 500;
+    font-weight: 800;
     color: #25523b;
 }
 .vectorclass {
     position: absolute;
     height: 33.33%;
     width: 14.9%;
-    left: 80%;
+    bottom: 85%;
+    left: 60%;
     max-width: 100%;
     max-height: 100%;
 }
@@ -40,7 +44,7 @@
     position: absolute;
     top: 100%;
     left: 0;
-    height: 130px;
+    height: 175px;
     width: 100px;
     background-color: #ceded4;
     z-index: 1;
@@ -49,9 +53,10 @@
     position: absolute;
     top: 21px;
     left: 87px;
+    font-weight: 800;
     font-size: 25px;
     letter-spacing: 0.05em;
-    font-family: Actor;
+
 }
 .logo {
     position: absolute;
@@ -74,7 +79,3 @@
     margin-top: 22px;
     margin-right: 56px;
 }
-.home{
-    color: #25523b; /* Set the color to white */
-    text-decoration: none; /* Remove the underline */
-  }
