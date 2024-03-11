@@ -1,0 +1,58 @@
+/* ImageComponent.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+.image-component {
+    text-align: center;
+    /* margin-left: 220px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logopredict{
+    width: 126px;
+    height: 77px;
+  }
+  .simple{
+    color: black;
+    font-weight: 500;
+    padding: 1rem;
+  }
+  .upload{
+    width: 228px;
+    height: 102px;
+    margin-bottom: 20px;
+  }
+  .text-heading {
+    color: #25523B;
+    font-family: Montserrat;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 40px; /* 111.111% */
+  }
+  .uploadclass{
+    border: 3px dashed #25523B;
+    border-radius: 5px;
+    width: 50%;
+    margin-bottom: 3rem;
+
+  }
+
+.predicttext{
+  color: #FFF;
+text-align: center;
+font-family: "Montserrat Extrabold", sans-serif;
+padding: 5px;
+font-size: 28px;
+font-style: normal;
+font-weight: 600;
+line-height: 30px; /* 93.75% */
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }

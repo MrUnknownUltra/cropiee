@@ -13,7 +13,19 @@ import LowerImage from './LowerImage';
 
 const Decoration = ({ onPredictClick}) => {
 
-
+  console.log("decore1")
+  const speech = (text) => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'hi-IN';
+    console.log("inside speech")
+    window.speechSynthesis.speak(utterance);
+  };
+  useEffect(() => {
+    // Delay the speech synthesis by 100 milliseconds
+    setTimeout(() => {
+      speech("नमस्ते अन्नदाता ,साथी मे आपका स्वागत है");
+    }, 100);
+  }, []);
   return (
     <>
     <Navbar/>

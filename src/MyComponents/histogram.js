@@ -1,49 +1,41 @@
 // SARChart.js
 import React, { useEffect, useState } from 'react';
 import Plot from 'react-plotly.js';
-import data from './Data/water_quality_data.json'; //  directly importing the JSON file
 import './histogram.css';
 
-const SARChart = () => {
+const SARChart = ({ data }) => {
   const [parsedData, setParsedData] = useState([]);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [showTable, setShowTable] = useState(false); 
+  const [sarValues, setSarValues] = useState([]);
 
   useEffect(() => {
-   
-    setParsedData(data);
-  }, []);
+    calculateSARValues(data);
+  }, [data]);
 
-  console.log(parsedData);
+  const calculateSARValues = (data) => {
+    const newSarValues = data.map((sample) => {
+      const Na = parseFloat(sample['Sodium']);
+      const Ca = parseFloat(sample['Calcium']);
+      const Mg = parseFloat(sample['Magnesium']);
 
-  if (!parsedData || parsedData.length === 0 || !parsedData[0]['id']) {
-    return <div>Error: Invalid data format</div>;
-  }
+      if (isNaN(Na) || isNaN(Ca) || isNaN(Mg) || Ca + Mg === 0) {
+        return null;
+      }
 
-  const calculatedSARValues = parsedData.map((sample) => {
-    const Na = parseFloat(sample['Na']);
-    const Ca = parseFloat(sample['Ca']);
-    const Mg = parseFloat(sample['Mg']);
+      return Na / Math.sqrt(Ca + Mg);
+    });
 
-    if (isNaN(Na) || isNaN(Ca) || isNaN(Mg) || Ca + Mg === 0) {
-      return null;
-    }
+    setSarValues(newSarValues);
+  };
 
-    return Na / Math.sqrt(Ca + Mg);
-  });
-
-  if (calculatedSARValues.some((value) => value === null)) {
+  if (!sarValues || sarValues.length === 0 || sarValues.some(value => value === null)) {
     return <div>Error: Invalid data for SAR calculation</div>;
   }
 
-  const xValues = parsedData.map((sample) => sample['id']);
-  const yValues = calculatedSARValues;
+  const xValues = data.map((sample, index) => `Sample ${index + 1}`);
+  const yValues = sarValues;
 
-
-  const defaultBarColor = 'rgb(25, 52, 59)';
-  const hoverBarColor = 'rgb(143, 182, 112)'; 
-
-  
   const interpretSAR = (sarValue) => {
     if (sarValue >= 1 && sarValue <= 9) {
       return 'Low - Suitable for most crops';
@@ -59,9 +51,9 @@ const SARChart = () => {
       return 'Invalid SAR value';
     };
   };
-
-  const interpretations = calculatedSARValues.map((value) => interpretSAR(value));
-
+  const interpretations = sarValues.map((value) => interpretSAR(value));
+  const defaultBarColor = 'rgb(25, 52, 59)';
+  const hoverBarColor = 'rgb(143, 182, 112)'; 
   const plotData = [
     {
       x: xValues,

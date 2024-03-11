@@ -58,6 +58,15 @@
   color: #FFF;
   font-size: medium;
   }
+  .download-sample {
+
+    border-radius: 10px;
+    background: #358856;
+    cursor: pointer;
+    margin-bottom: 15px;
+    color: #FFF;
+    font-size: medium;
+  }
 .predicttext{
   color: #FFF;
 text-align: center;

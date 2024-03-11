@@ -3,67 +3,56 @@ import React, { useEffect, useState } from 'react';
 import Plot from 'react-plotly.js';
 import './histogram.css';
 
-const Pie = () => {
-  const [parsedData, setParsedData] = useState([]);
+const Pie = ({ values }) => {
+
   const [hoveredIndex, setHoveredIndex] = useState(null);
-
+  const [meanValues, setMeanValues] = useState(null);
   useEffect(() => {
-    const data = [
-      {
-        "ph": "7.249080237694725",
-        "Hardness": "4.116898859160489",
-        "Solids": "305.92644736118973",
-        "Chloramines": "2.4301794076057535",
-        "Sulfate": "30.509558711194707",
-        "Conductivity": "775.6677022116469",
-        "Organic_carbon": "0.777354579378964",
-        "Trihalomethanes": "0.061779581543732594",
-        "Turbidity": "0.8631034258755935",
-        "Na": "11.959424593830171",
-        "Ca": "3.142918568673425",
-        "Mg": "14.4875726456884",
-        "HCO3": "161.4880310328125",
-        "CO3": "41.7411003148779",
-        "id": 1
-      },
-    ];
+    // Calculate mean values
+    const meanValues = calculateMean(values);
+    setMeanValues(meanValues);
+  }, [values]);
 
-    setParsedData(data);
-  }, []);
+  const calculateMean = (data) => {
+    if (!data || data.length === 0) return null;
 
-  if (!parsedData || parsedData.length === 0 || !parsedData[0]['id']) {
-    return <div>Error: Invalid data format</div>;
+    const selectedKeys = ['Solids', 'Chloramines', 'Sulfate', 'Organic_carbon', 'Trihalomethanes', 'Sodium', 'Magnesium', 'Calcium'];
+
+    const filteredData = data.map(obj => {
+      const filteredObj = {};
+      selectedKeys.forEach(key => {
+        filteredObj[key] = obj[key];
+      });
+      return filteredObj;
+    });
+
+    const meanValues = {};
+    selectedKeys.forEach(key => {
+      const total = filteredData.reduce((acc, obj) => acc + obj[key], 0);
+      meanValues[key] = total / filteredData.length;
+    });
+    
+    return meanValues;
+  };
+
+  if (!meanValues) {
+    return <div>Loading...</div>;
   }
 
-  const labels = Object.keys(parsedData[0]).filter(key => key !== 'id');
-  
-  // Calculate mean, min, and max for each parameter
-  const statistics = labels.reduce((acc, label) => {
-    const values = parsedData.map(data => parseFloat(data[label])).filter(value => !isNaN(value));
+  const labels = Object.keys(meanValues);
+  const valuesArray = Object.values(meanValues); // Convert object values to array
 
-    if (values.length > 0) {
-      acc[label] = {
-        mean: values.reduce((sum, value) => sum + value, 0) / values.length,
-        min: Math.min(...values),
-        max: Math.max(...values),
-      };
-    }
-
-    return acc;
-  }, {});
-
-  const meanValues = labels.map(label => statistics[label]?.mean || 0);
   const defaultBarColor = 'rgb(25, 52, 59)';
   const hoverBarColor = 'rgb(143, 182, 112)';
   const pieData = [
     {
-      labels,
-      values: meanValues,
+      labels: labels,
+      values: valuesArray, // Use the array of values
       type: 'pie',
       hoverinfo: 'label+percent+name',
       textinfo: 'none',
       textposition: 'inside',
-      marker: { colors: labels.map((_, index) => (index === hoveredIndex ?  hoverBarColor: defaultBarColor)) },
+      marker: { colors: labels.map((_, index) => (index === hoveredIndex ? hoverBarColor : defaultBarColor)) },
     },
   ];
 
@@ -79,22 +68,23 @@ const Pie = () => {
       yaxis: { title: 'SAR Value' },
     },
     paper_bgcolor: 'rgba(0, 0, 0, 0)',
-    autosize: false, 
+    autosize: false,
     width: 500,
-    height: 500, 
+    height: 500,
     margin: {
-      l: 50, 
-      r: 50, 
+      l: 50,
+      r: 50,
       b: 50,
-      t: 50, 
+      t: 50,
     },
-    plot_bgcolor: 'rgba(255, 255, 255, 0.9)', 
-    showlegend: true, 
+    plot_bgcolor: 'rgba(255, 255, 255, 0.9)',
+    showlegend: true,
     border: {
       color: 'rgb(25, 52, 59)',
       width: 2,
-    }, 
+    },
   };
+
   return (
     <div className="sar-chart-container">
       <div className="chart-container">

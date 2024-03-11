@@ -1,0 +1,9 @@
+.about-us-container {
+    /* Set the background image */
+    background-image: url('/src/MyComponents/Images/aboutus.png');
+    /* Set the dimensions and other styles as needed */
+    width: 100%; /* or any other width */
+    height: 100%; /* or any other height */
+    /* Additional styles */
+  }
+  

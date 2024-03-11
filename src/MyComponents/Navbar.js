@@ -4,7 +4,7 @@ import imageUrl from './Images/image19.png';
 import ivector from './Images/Vector.png';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-
+import AboutUs from './Aboutus'
 const Navbar = () => {
   const { t, i18n } = useTranslation();
 
@@ -49,11 +49,12 @@ const Navbar = () => {
     <>
       <div className="home-parent">
         <Link to='/' className="home"><div >{t('home')}</div></Link>
-        <div className="about">{t('about')}</div>
-        <div className="saathi">{t('saathi')}</div>
-        <div className="logo">
+        <Link to ='/aboutus' component={<AboutUs />}><div className="about">{t('about')}</div></Link>
+        <Link to='/' className="saathihome"><div className="saathi">{t('saathi')}</div></Link>
+        <Link to='/'><div className="logo">
           <img src={imageUrl} alt="Logo" />
         </div>
+        </Link>
       </div>
       <div>
         <div className="language-parent">
